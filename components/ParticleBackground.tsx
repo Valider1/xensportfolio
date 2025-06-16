@@ -4,23 +4,22 @@
 import { useCallback, useMemo } from "react"
 import Particles from "react-tsparticles"
 import { loadSlim } from "tsparticles-slim"
-import type { Engine, Container } from "tsparticles-engine"
+import type { Engine } from "tsparticles-engine"
 import { useTheme } from "next-themes"
 
 export default function ParticleBackground() {
   const { theme } = useTheme()
 
-  // Choose your colors per theme
+  // choose colors based on light/dark mode
   const isDark = theme === "dark"
   const particleColor = isDark ? "#00FFFF" : "#0066CC"
   const linkColor     = isDark ? "#00FFFF" : "#0066CC"
-  const background    = isDark ? "transparent" : "transparent"
 
   const options = useMemo(() => ({
     fullScreen: { enable: true, zIndex: 0 },
     detectRetina: true,
     fpsLimit: 60,
-    background: { color: background },
+    background: { color: "transparent" },
     particles: {
       number: { value: 80, density: { enable: true, area: 800 } },
       color: { value: particleColor },
@@ -52,16 +51,17 @@ export default function ParticleBackground() {
         push: { quantity: 4 },
       },
     },
-  }), [particleColor, linkColor, background])
+  }), [particleColor, linkColor])
 
   const particlesInit = useCallback(async (engine: Engine) => {
+    // slim bundle only
     await loadSlim(engine)
   }, [])
 
-  const particlesLoaded = useCallback(
-    async (container: Container | undefined) => {},
-    []
-  )
+  // no need for the `container` param if we're not using it
+  const particlesLoaded = useCallback(async () => {
+    // callback fires when particles are ready
+  }, [])
 
   return (
     <Particles
