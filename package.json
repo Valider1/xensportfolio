@@ -12,6 +12,9 @@
     "@react-three/drei": "^10.3.0",
     "@react-three/fiber": "^9.1.2",
     "@sendgrid/mail": "^8.1.5",
+    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.8.1",
     "framer-motion": "^12.18.1",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.515.0",
@@ -22,10 +25,8 @@
     "react-google-recaptcha": "^3.1.0",
     "react-parallax-tilt": "^1.7.298",
     "react-simple-typewriter": "^5.0.1",
-    "react-tsparticles": "^2.12.2",
     "three": "^0.177.0",
     "tsparticles": "^3.8.1",
-    "tsparticles-slim": "^2.12.0",
     "typewriter-effect": "^2.22.0"
   },
   "devDependencies": {
