@@ -2,9 +2,9 @@
 "use client"
 
 import { useCallback, useMemo } from "react"
-import Particles from "react-tsparticles"
-import { loadSlim } from "tsparticles-slim"
-import type { Engine } from "tsparticles-engine"
+import Particles from "@tsparticles/react"
+import { loadSlim } from "@tsparticles/slim"
+import type { Engine } from "@tsparticles/engine"
 import { useTheme } from "next-themes"
 
 export default function ParticleBackground() {
@@ -58,10 +58,8 @@ export default function ParticleBackground() {
     await loadSlim(engine)
   }, [])
 
-  // no need for the `container` param if we're not using it
-  const particlesLoaded = useCallback(async () => {
-    // callback fires when particles are ready
-  }, [])
+  // silence unused-vars by omitting the parameter
+  const particlesLoaded = useCallback(async () => {}, [])
 
   return (
     <Particles
